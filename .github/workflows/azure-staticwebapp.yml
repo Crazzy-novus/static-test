@@ -49,6 +49,10 @@ jobs:
         run: npm install
       - name: Build And Deploy
         id: builddeploy
+        run: |
+          npm install -g @angular/cli
+          ng build --prod
+      - name: Deploy to Azure
         uses: Azure/static-web-apps-deploy@v1
         with:
           azure_static_web_apps_api_token: ${{ secrets.Azure_WEBAPP_PUBLISH_PROFILE }} # secret containing api token for app
